@@ -42,6 +42,8 @@ if (argv["z"]) {
 
 if (argv["d"]) {
     day = argv["d"];
+} else if (argv["d"] == 0) {
+    day = 0;
 } else {
     day = 1;
 }
@@ -69,7 +71,7 @@ async function getDayPrecipHours(dayNum) {
 
 async function galoshDecision() {
     let precipHours = await getDayPrecipHours(day);
-
+    
     let dayPhrase;
     switch (day) {
         case 0:
