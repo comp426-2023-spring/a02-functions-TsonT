@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-let minimist = require("minimist");
-let moment = require("moment-timezone");
+import fetch from "node-fetch";
+import minimist from "minimist";
+import moment from "moment-timezone";
 
 let latitude;
 let longitude;
@@ -67,7 +68,7 @@ async function getDayPrecipHours(dayNum) {
 }
 
 async function galoshDecision() {
-    precipHours = await getDayPrecipHours(day);
+    let precipHours = await getDayPrecipHours(day);
 
     let dayPhrase;
     switch (day) {
