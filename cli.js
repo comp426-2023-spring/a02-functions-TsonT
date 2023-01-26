@@ -27,12 +27,18 @@ if (argv["n"] && argv['s']) {
     process.exit(1);
 }
 latitude = parseFloat(argv["n"] || -argv["s"] || 0).toFixed(1);
+if (Math.abs(latitude) > 90) {
+    console.log("Latitude must be in range");
+}
 
 if (argv["e"] && argv['w']) {
     console.log("Cannot specify LONGITUDE twice");
     process.exit(1);
 }
 longitude = parseFloat(argv["e"] || -argv["w"] || 0).toFixed(1);
+if (Math.abs(longitude) > 90) {
+    console.log("Longitude must be in range");
+}
 
 if (argv["z"]) {
     timezone = argv["z"];
@@ -66,10 +72,6 @@ async function getWeatherJson() {
 
 async function getDayPrecipHours(dayNum) {
     let weatherJson = await getWeatherJson();
-    if (weatherJson.error == true) {
-        console.log(weatherJson);
-        process.exit(1);
-    }
     return weatherJson.daily.precipitation_hours[0];
 }
 
