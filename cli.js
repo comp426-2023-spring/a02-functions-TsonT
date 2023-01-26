@@ -29,6 +29,7 @@ if (argv["n"] && argv['s']) {
 latitude = parseFloat(argv["n"] || -argv["s"] || 0).toFixed(1);
 if (Math.abs(latitude) > 90) {
     console.log("Latitude must be in range");
+    process.exit(1);
 }
 
 if (argv["e"] && argv['w']) {
@@ -38,6 +39,7 @@ if (argv["e"] && argv['w']) {
 longitude = parseFloat(argv["e"] || -argv["w"] || 0).toFixed(1);
 if (Math.abs(longitude) > 90) {
     console.log("Longitude must be in range");
+    process.exit(1);
 }
 
 if (argv["z"]) {
