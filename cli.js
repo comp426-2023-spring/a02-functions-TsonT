@@ -24,22 +24,22 @@ if (argv["h"]) {
 
 if (argv["n"] && argv['s']) {
     console.log("Cannot specify LATITUDE twice");
-    process.exit(1);
+    process.exit(0);
 }
 latitude = argv["n"] || -argv["s"];
 if (!(latitude <= 90 && latitude >= -90)) {
     console.log("Latitude must be in range");
-    process.exit(1);
+    process.exit(0);
 }
 
 if (argv["e"] && argv['w']) {
     console.log("Cannot specify LONGITUDE twice");
-    process.exit(1);
+    process.exit(0);
 }
 longitude = argv["e"] || -argv["w"];
 if (!(longitude <= 180 && longitude >= -180)) {
     console.log("Longitude must be in range");
-    process.exit(1);
+    process.exit(0);
 }
 
 if (argv["z"]) {
