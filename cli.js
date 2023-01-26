@@ -26,7 +26,7 @@ if (argv["n"] && argv['s']) {
     console.log("Cannot specify LATITUDE twice");
     process.exit(1);
 }
-latitude = parseFloat(argv["n"] || -argv["s"] || 0).toFixed(1);
+latitude = argv["n"] || -argv["s"] || 0;
 if (Math.abs(latitude) > 90) {
     console.log("Latitude must be in range");
     process.exit(1);
@@ -36,8 +36,8 @@ if (argv["e"] && argv['w']) {
     console.log("Cannot specify LONGITUDE twice");
     process.exit(1);
 }
-longitude = parseFloat(argv["e"] || -argv["w"] || 0).toFixed(1);
-if (Math.abs(longitude) > 90) {
+longitude = argv["e"] || -argv["w"] || 0;
+if (Math.abs(longitude) > 180) {
     console.log("Longitude must be in range");
     process.exit(1);
 }
