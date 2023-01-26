@@ -66,12 +66,16 @@ async function getWeatherJson() {
 
 async function getDayPrecipHours(dayNum) {
     let weatherJson = await getWeatherJson();
+    if (weatherJson.error == true) {
+        console.log(weatherJson);
+        process.exit(1);
+    }
     return weatherJson.daily.precipitation_hours[0];
 }
 
 async function galoshDecision() {
     let precipHours = await getDayPrecipHours(day);
-    
+
     let dayPhrase;
     switch (day) {
         case 0:
